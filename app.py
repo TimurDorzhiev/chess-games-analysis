@@ -10,6 +10,7 @@ app = Flask(__name__)
 
 
 # Загружаем данные
+# from Kaggle https://www.kaggle.com/datasets/datasnaek/chess/data
 data = pd.read_csv('data/games.csv')
 print(data.columns)
 
