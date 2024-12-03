@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game {{ game_id }}</title>
+    <!-- Подключаем chess.js (очень важно, чтобы был выше chessboard.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+    <link rel="stylesheet" href="/static/css/chessboard-1.0.0.min.css" />
+    <link rel="stylesheet" href="/static/css/styles.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="/static/js/chessboard-1.0.0.min.js"></script>
+  </head>
+  <body>
+    <h1>Game {{ game_id }}</h1>
+    <div id="board" style="width: 400px; margin: auto"></div>
+
+    <script>
+      // Получаем список ходов
+      var moves = "{{ moves }}".split(" ");
+      console.log("UCI-ходы:", moves);
+
+      // Инициализируем доску
+      var board = Chessboard("board", {
+        position: "start",
+        pieceTheme: "/static/img/chesspieces/wikipedia/{piece}.png",
+      });
+
+      // Инициализируем игру для отслеживания позиций
+      var game = new Chess();
+      // Проверяем выполнение хода
+      let index = 0;
+
+      function playMoves() {
+        console.log("playMoves вызвана, текущий индекс:", index);
+
+        if (index < moves.length) {
+          var move = moves[index];
+          console.log("Выполняем ход:", move);
+
+          // Применяем ход к игре
+          game.move({
+            from: move.slice(0, 2), // Например, e2
+            to: move.slice(2, 4), // Например, e4
+          });
+
+          // Обновляем позицию на доске
+          board.position(game.fen());
+          index++;
+
+          setTimeout(playMoves, 1000);
+        } else {
+          console.log("Все ходы выполнены!");
+        }
+      }
+      playMoves();
+    </script>
+
+    <a href="/">Back to games</a>
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Analysis</title>
+  </head>
+  <body>
+    <h1>Chess Games Analysis</h1>
+    <p>Total Games: {{ total_games }}</p>
+
+    <h2>Result Distribution</h2>
+    <ul>
+      {% for result, count in result_distribution.items() %}
+      <li>{{ result }}: {{ count }}</li>
+      {% endfor %}
+    </ul>
+
+    <h2>Result Distribution</h2>
+    <div>{{ result_chart | safe }}</div>
+
+    <h2>Game Length Distribution</h2>
+    <div>{{ game_length_chart | safe }}</div>
+  </body>
+</html>

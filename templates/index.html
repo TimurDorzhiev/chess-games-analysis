@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Chess Visualizer</title>
+  </head>
+  <body>
+    <h1>Chess Games</h1>
+    <a href="/analysis">Go to Analysis</a>
+    <ul>
+      {% for game in games %}
+      <li>
+        <a href="/game/{{ game['game_id'] }}">
+          Game {{ game['game_id'] }} - {{ game['opening_name'] }} ({{
+          game['result'] }})
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>
