@@ -2,6 +2,12 @@
 
 A data analytics project that visualizes chess games data, with an interactive chessboard and analytical insights.
 
+## Live Demo
+
+You can view the live version of the app here:
+
+[Chess Visualizer on Render](https://chess-games-analysis.onrender.com/)
+
 ## Features
 
 - Interactive chessboard displaying game moves.
@@ -19,6 +25,14 @@ The dataset contains information about chess games:
 - `moves`: Moves played in the game.
 - `opening_name`: The opening played in the game.
 - `result`: The outcome of the game (`White`, `Black`, or `Draw`).
+
+## Technologies Used
+
+Flask
+Gunicorn
+chessboard.js
+Python (pandas, chess)
+Render for deployment
 
 ## Setup Instructions
 
